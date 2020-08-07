@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using EngineerOffice.Models;
+using Factory.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace EngineerOffice.Controllers
+namespace Factory.Controllers
 {
   public class MachinesController : Controller
   {
-    private readonly EngineerOfficeContext _db;
+    private readonly FactoryContext _db;
 
-    public MachinesController(EngineerOfficeContext db)
+    public MachinesController(FactoryContext db)
     {
       _db = db;
     }
@@ -23,17 +23,17 @@ namespace EngineerOffice.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Type");
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Machines machine, int EngineerId)
+    public ActionResult Create(Machine machine, int EngineerId)
     {
       _db.Machines.Add(machine);
       if (EngineerId != 0)
       {
-        _db.MachineEngineer.Add(new MachineEngineer() { EngineerId = EngineerId, MachineId = machine.MachineId });
+        _db.MachineEngineers.Add(new MachineEngineer() { EngineerId = EngineerId, MachineId = machine.MachineId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -57,11 +57,11 @@ namespace EngineerOffice.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Machines machine, int EngineerId)
+    public ActionResult Edit(Machine machine, int EngineerId)
     {
       if (EngineerId != 0)
       {
-        _db.MachineEngineer.Add(new MachineEngineer() { EngineerId = EngineerId, MachineId = machine.MachineId });
+        _db.MachineEngineers.Add(new MachineEngineer() { EngineerId = EngineerId, MachineId = machine.MachineId });
       }
       _db.Entry(machine).State = EntityState.Modified;
       _db.SaveChanges();
@@ -70,15 +70,15 @@ namespace EngineerOffice.Controllers
     public ActionResult AddEngineer(int id)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Type");
       return View(thisMachine);
     }
     [HttpPost]
-    public ActionResult AddEngineer(Machines machine, int EngineerId)
+    public ActionResult AddEngineer(Machine machine, int EngineerId)
     {
       if (EngineerId != 0)
       {
-        _db.MachineEngineer.Add(new MachineEngineer() { EngineerId = EngineerId, MachineId = machine.MachineId });
+        _db.MachineEngineers.Add(new MachineEngineer() { EngineerId = EngineerId, MachineId = machine.MachineId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -86,8 +86,8 @@ namespace EngineerOffice.Controllers
     [HttpPost]
     public ActionResult DeleteCateogry(int joinId)
     {
-      var joinEntry = _db.MachineEngineer.FirstOrDefault(entry => entry.MachineEngineerId == joinId);
-      _db.MachineEngineer.Remove(joinEntry);
+      var joinEntry = _db.MachineEngineers.FirstOrDefault(entry => entry.MachineEngineerId == joinId);
+      _db.MachineEngineers.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

@@ -2,17 +2,17 @@
   Layout = "_Layout";
 }
 
-@model DoctorOffice.Models.Doctor
+@model Factory.Models.Engineer
 
-<h4>Add a new Doctor</h4>
+<h4>Add a new Engineer</h4>
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.Name)
-    @Html.TextBoxFor(model => model.Name)
+    @Html.LabelFor(model => model.Type)
+    @Html.TextBoxFor(model => model.Type)
 
     @Html.Label("Select Specialty")
     @Html.DropDownList("SpecialtyId")
 
-    <input type="submit" value="Add new Doctor" />
+    <input type="submit" value="Add new Engineer" />
 }
-<p>@Html.ActionLink("Show all Doctors", "Index")</p>
+<p>@Html.ActionLink("Show all Engineers", "Index")</p>

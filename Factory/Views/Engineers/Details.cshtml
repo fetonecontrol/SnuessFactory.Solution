@@ -1,42 +1,29 @@
 @{
   Layout = "_Layout";
 }
-@model DoctorOffice.Models.Doctor;
+@model Factory.Models.Engineer;
 
-<h2>Doctor Details</h2>
+<h2>Engineer Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
 
-@if(@Model.Specialties.Count == 0)
+
+
+@if(@Model.Machines.Count == 0)
 {
-  <p>This doctor isn't all that special</p>
+  <p>This Engineer does not contain any Machines</p>
 }
 else
 {
-  <h4>This doctor's specialties include:</h4>
+  <h4>Machines the Engineer contains:</h4>
   <ul>
-    @foreach(var join in Model.Specialties)
+    @foreach(var join in Model.Machines)
     {
-      <li>@join.Specialty.Name</li>
+      <li>@join.Machine.Type</li>
     }
   </ul>
 }
 
-@if(@Model.Patients.Count == 0)
-{
-  <p>This Doctor does not contain any Patients</p>
-}
-else
-{
-  <h4>Patients the Doctor contains:</h4>
-  <ul>
-    @foreach(var join in Model.Patients)
-    {
-      <li>@join.Patient.Name</li>
-    }
-  </ul>
-}
-
-<p>@Html.ActionLink("Back to Doctors", "Index")</p>
-<p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
-<p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Back to Engineers", "Index")</p>
+<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>

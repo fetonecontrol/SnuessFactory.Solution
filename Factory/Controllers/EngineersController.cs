@@ -11,14 +11,14 @@ namespace Factory.Controllers
   {
     private readonly FactoryContext _db;
 
-    public DoctorsController(DoctorOfficeContext db)
+    public EngineersController(FactoryContext db)
     {
       _db = db;
     }
 
     public ActionResult Index()
     {
-      List<Engineer> model = _db.Engineer.ToList();
+      List<Engineer> model = _db.Engineers.ToList();
       return View(model);
     }
 
@@ -30,25 +30,25 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Engineer engineer)
     {
-      _db.Engineer.Add(engineer);
+      _db.Engineers.Add(engineer);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      var thisDoctor = _db.Engineer
+      var thisEngineer = _db.Engineers
       .Include(engineer => engineer.Machines)
       .ThenInclude(join => join.Machine)
       .FirstOrDefault(engineer => engineer.EngineerId == id);
-      return View(thisDoctor);
+      return View(thisEngineer);
     }
 
     public ActionResult Edit(int id)
     {
-      ViewBag.SpecialtyId = new SelectList(_db.Machines, "MachineId", "Name");
-      var thisEngineer = _db.Engineer.FirstOrDefault(engineer => engineer.Engineer == id);
-      return View(thisDoctor);
+      ViewBag.EngineerId = new SelectList(_db.Machines, "MachineId", "Type");
+      var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      return View(thisEngineer);
     }
 
     [HttpPost]
@@ -56,7 +56,7 @@ namespace Factory.Controllers
     {
       if (MachineId != 0)
       {
-        _db.MachineEngineer.Add(new MachineEngineer() { MachineId = MachineId, EngineerId = engineer.EngineerId });
+        _db.MachineEngineers.Add(new MachineEngineer() { MachineId = MachineId, EngineerId = engineer.EngineerId });
       }
       _db.Entry(engineer).State = EntityState.Modified;
       _db.SaveChanges();
@@ -65,15 +65,15 @@ namespace Factory.Controllers
 
     public ActionResult Delete(int id)
     {
-      var thisDoctor = _db.Engineer.FirstOrDefault(engineer => engineer.EngineerId == id);
-      return View(thisDoctor);
+      var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      return View(thisEngineer);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisEngineer = _db.Engineer.FirstOrDefault(engineer => engineer.EngineerId == id);
-      _db.Engineer.Remove(thisDoctor);
+      var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      _db.Engineers.Remove(thisEngineer);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

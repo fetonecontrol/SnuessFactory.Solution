@@ -2,42 +2,25 @@
   Layout = "_Layout";
 }
 
-@model DoctorOffice.Models.Patient
+@model Factory.Models.Machine
 
 <h2>Edit</h2>
 
-<h4>Edit this task: @Html.DisplayFor(model => model.Name)</h4>
+<h4>Edit this task: @Html.DisplayFor(model => model.Type)</h4>
 
-@using (Html.BeginForm("Index", "Patients", FormMethod.Get))
+@using (Html.BeginForm("Index", "Machines", FormMethod.Get))
 {
-    @Html.HiddenFor(model => model.PatientId)
+    @Html.HiddenFor(model => model.MachineId)
 
-    @Html.LabelFor(model => model.Name)
-    @Html.EditorFor(model => model.Name)
+    @Html.LabelFor(model => model.Type)
+    @Html.EditorFor(model => model.Type)
 
-    @Html.Label("Select Specialty")
-    @Html.DropDownList("SpecialtyId")
+    @Html.Label("Select Engineer")
+    @Html.DropDownList("EngineerId")
 
-    @* @Html.Label("Select Doctor")
-    @Html.DropDownList("DoctorId") *@
+
 
     <input type="submit" value="Save" />
 }
 
 <p>@Html.ActionLink("Back to list", "Index")</p>
-
-  @* @using (Html.BeginForm("Index", "Artists", FormMethod.Get))
-  {
-    <p>Search Artist: @Html.TextBox("firstName")</p>
-    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-  }  *@
-
-@* public ActionResult Index(string firstName = "")
-    {
-      var model = _db.DoctorSpecialty;
-      if (!string.IsNullOrEmpty(firstName))
-      {
-        return View(model.AsQueryable().Where(doctor => doctor.Specialties.Contains(SpecialtyId)).ToList());
-      }
-      return View(model.ToList());
-    } *@

@@ -1,31 +1,31 @@
 @{
   Layout = "_Layout";
 }
-@model DoctorOffice.Models.Patient
-<h2>Patient Details</h2>
+@model Factory.Models.Machine
+<h2>Machine Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
 
-@if(@Model.Doctors.Count ==0)
+@if(@Model.Engineers.Count ==0)
 {
-  <p>This Patient does not belong to any Doctors</p>
+  <p>This Machine does not belong to any Engineers</p>
 }
 else
 {
-  <h4>Doctors the Patient belongs to:</h4>
+  <h4>Engineers the Machine belongs to:</h4>
 <ul>
-  @foreach(var join in Model.Doctors)
+  @foreach(var join in Model.Engineers)
   {
-    <li>@join.Doctor.Name</li>
-    @using (Html.BeginForm("DeleteDoctor", "Patients"))
+    <li>@join.Engineer.Type</li>
+    @using (Html.BeginForm("Delete", "Machines"))
     {
-      @Html.Hidden("joinId", @join.DoctorPatientId)
+      @Html.Hidden("joinId", @join.MachineEngineerId)
       <input type="submit" value="Delete"/>
     }
   }
 </ul>
 }
-<p>@Html.ActionLink("Add a Doctor", "AddDoctor", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Add an Engineer", "AddEngineer", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
-<p>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</p>

@@ -2,13 +2,13 @@
   Layout = "_Layout";
 }
 
-@model DoctorOffice.Models.Doctor
+@model Factory.Models.Engineer
 
 <h2>Are you sure you want to delete this?</h2>
 
-@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)
 @using (Html.BeginForm())
 {
     <input type="submit" value="Delete" />
 }
-@Html.ActionLink("Back to Doctors", "Index")
+@Html.ActionLink("Back to Engineers", "Index")
