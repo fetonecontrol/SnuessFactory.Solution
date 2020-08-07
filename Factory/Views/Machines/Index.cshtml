@@ -5,7 +5,7 @@
 @using Factory.Models;
 @model List<Factory.Models.Machine>; //here comes the balll!!!
 
-<h1>Machines</h1>
+<h2>Machines</h2>
 
 @if (@Model.Count == 0)
 {
@@ -16,7 +16,5 @@
 {
   <li>@Html.ActionLink($"{machine.Type}", "Details", new { id = machine.MachineId })</li>
 }
-
-<p>@Html.ActionLink("Add new Machine", "Create")</p>
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<br>
+<input type="button" class="btn btn-outline-dark" value="Add New Machine" onclick="location.href='@Url.Action("Create", "Machines")'" />

@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 
-<h4>Edit this task: @Html.DisplayFor(model => model.Type)</h4>
+<h2>Edit this task: @Html.DisplayFor(model => model.Type)</h2>
 
 @using (Html.BeginForm())
 {
@@ -20,7 +20,5 @@
 
 
 
-    <input type="submit" value="Save" />
+    <input type="submit" class="btn btn-dark" value="Save" />
 }
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
