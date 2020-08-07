@@ -2,11 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Factory</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="~/css/styles.css">
+    <title>Yer Lookin Sharp!!</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='~/css/styles.css'>
   </head>
   <body>
-    @RenderBody()
+    <div style="background-image: url('img_girl.jpg');">
+    @Html.Partial("NavBar")
+    <div class="section">
+      <div class="box">
+        @RenderBody()
+      </div>
+    </div>  
+    </div>
   </body>
 </html>
