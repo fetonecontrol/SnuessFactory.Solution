@@ -1,5 +1,7 @@
 body { 
   background-image: url("../img/background.jpg");
+  background-color: rgb(167, 101, 131);
+  background-blend-mode: multiply;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   margin: 0;

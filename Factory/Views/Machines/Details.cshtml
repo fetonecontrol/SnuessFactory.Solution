@@ -12,7 +12,7 @@
 }
 else
 {
-  <h2>Engineers the Machine belongs to:</h2>
+  <p>Engineers the Machine belongs to:</p>
 <ul>
   @foreach(var join in Model.Engineers)
   {
@@ -26,4 +26,4 @@ else
 </ul>
 }
 <input type="button" class="btn btn-dark" value="Edit Machine" onclick="location.href='@Url.Action("Edit", "Machines", new { id = Model.MachineId })'" />
-<input type="button" class="btn btn-dark" value="Edit Machine" onclick="location.href='@Url.Action("Delete", "Machines", new { id = Model.MachineId })'" />
+<input type="button" class="btn btn-dark" value="Delete Machine" onclick="location.href='@Url.Action("Delete", "Machines", new { id = Model.MachineId })'" />
