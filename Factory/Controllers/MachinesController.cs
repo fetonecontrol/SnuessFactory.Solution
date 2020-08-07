@@ -50,8 +50,8 @@ namespace Factory.Controllers
 
     public ActionResult Edit(int id, int MachineId)
     {
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
       var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Type");
     
       return View(thisMachine);
     }
@@ -84,7 +84,7 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
     [HttpPost]
-    public ActionResult DeleteCateogry(int joinId)
+    public ActionResult DeleteMachine(int joinId)
     {
       var joinEntry = _db.MachineEngineers.FirstOrDefault(entry => entry.MachineEngineerId == joinId);
       _db.MachineEngineers.Remove(joinEntry);
