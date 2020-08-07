@@ -6,13 +6,10 @@ namespace Factory.Models
   {
     public Machine()
     {
-      this.Engineers = new HashSet<MachineEngineer>(); // contextual list
+      this.Engineers = new HashSet<MachineEngineer>();
     }
-
     public int MachineId { get; set; }
     public string Type { get; set; }
-
-
     public ICollection<MachineEngineer> Engineers { get; }
   }
 }

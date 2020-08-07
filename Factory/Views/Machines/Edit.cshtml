@@ -8,7 +8,7 @@
 
 <h4>Edit this task: @Html.DisplayFor(model => model.Type)</h4>
 
-@using (Html.BeginForm("Index", "Machines", FormMethod.Get))
+@using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.MachineId)
 
