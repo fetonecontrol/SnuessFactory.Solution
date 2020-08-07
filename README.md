@@ -22,9 +22,7 @@ _Establish many to many relationship between Engineers and Machines_
 * _Clone or download this repository located at https://github.com/fetonecontrol/SnuessFactory.Solution
 * _Run $ dotnet restore to download all dev dependencies_
 * _Run $ dotnet build to create project_
-* _Download and install the latest MySql Version from 
-* _Run dotnet ef migrations add "Name or Id of your choosing"_
-
+* _In MySql WorkBench, select Data Import from the Server tab, navigate to the root directory of this folder, and select frederick_ernest.sql_
 
 ## Known Bugs
 
@@ -40,6 +38,7 @@ _{Please contact me at with any known bugs or support issues.}_
 * _Html_
 * _CSS_
 * _MySql
+* _Many to Many database relationships_
 * _Entity Framework_
 * _Razor_
 * _GitHub_
