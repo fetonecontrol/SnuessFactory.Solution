@@ -84,26 +84,26 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
     [HttpPost]
-    public ActionResult DeleteMachine(int joinId)
+    public ActionResult DeleteRelationShip(int joinId)
     {
       var joinEntry = _db.MachineEngineers.FirstOrDefault(entry => entry.MachineEngineerId == joinId);
       _db.MachineEngineers.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-        public ActionResult Delete(int id)
-        {
-          var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-          return View(thisMachine);
-        }
+    public ActionResult Delete(int id)
+    {
+      var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+      return View(thisMachine);
+    }
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-          var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-          _db.Machines.Remove(thisMachine);
-          _db.SaveChanges();
-          return RedirectToAction("Index");
-        }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+      _db.Machines.Remove(thisMachine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
