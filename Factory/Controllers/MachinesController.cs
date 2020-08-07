@@ -48,10 +48,10 @@ namespace EngineerOffice.Controllers
       return View(thisMachine);
     }
 
-    public ActionResult Edit(int id, int specialtyId)
+    public ActionResult Edit(int id, int MachineId)
     {
       var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Type");
     
       return View(thisMachine);
     }
