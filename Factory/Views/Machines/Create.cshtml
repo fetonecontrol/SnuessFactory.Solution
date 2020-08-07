@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorOffice.Models.Patient
+
+<h4>Add a new task</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+    @Html.Label("Select Doctor")
+    @Html.DropDownList("DoctorId")
+
+    <input type="submit" value="Add new Patient" class="btn btn-default" />
+}
+<p>@Html.ActionLink("Show all Patients", "Index")</p>
